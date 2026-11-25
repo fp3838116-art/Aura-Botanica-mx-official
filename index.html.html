@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Botánica MX | Clean Botanical Skincare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            botanical: {
+              50: '#f5f8f5',
+              100: '#e6eee6',
+              200: '#ceddce',
+              500: '#4a7c59',
+              700: '#2d5238',
+              900: '#1a3322',
+            },
+            sand: {
+              50: '#fcfbf9',
+              100: '#f5f2eb',
+              200: '#e8e2d5',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-sand-50 text-stone-800 font-sans antialiased">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-botanical-900 text-sand-50 text-xs sm:text-sm py-2.5 px-4 text-center font-medium tracking-wide">
+    🌿 FREE Shipping on orders over $749 MXN &nbsp;|&nbsp; Subscribe &amp; Save 15% on your 30-day routine
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-sand-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-full bg-botanical-700 text-white flex items-center justify-center font-serif text-xl font-bold">
+          A
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-bold text-botanical-900 tracking-tight block leading-none">Aura Botánica</span>
+          <span class="text-[10px] uppercase tracking-[0.22em] text-botanical-500 font-semibold">México</span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+        <a href="#catalog" class="hover:text-botanical-700 transition">Shop All (7)</a>
+        <a href="#benefits" class="hover:text-botanical-700 transition">Our Botanicals</a>
+        <a href="#faq" class="hover:text-botanical-700 transition">FAQ</a>
+        <a href="#contact" class="hover:text-botanical-700 transition">Contact</a>
+      </nav>
+
+      <!-- Search Bar + Cart Trigger -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <div class="relative hidden sm:block">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search nopal, serum, kit..."
+            onkeyup="filterProducts()"
+            class="pl-9 pr-4 py-2 text-sm bg-sand-100 border border-sand-200 rounded-full focus:outline-none focus:border-botanical-500 w-48 lg:w-64 transition"
+          />
+          <svg class="w-4 h-4 text-stone-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <button
+          onclick="toggleCart()"
+          class="relative p-2.5 rounded-full bg-botanical-50 hover:bg-botanical-100 text-botanical-900 transition flex items-center gap-2"
+          aria-label="Shopping Cart"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="text-xs font-semibold hidden sm:inline">Cart</span>
+          <span id="cartCount" class="bg-botanical-700 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-botanical-100 via-sand-100 to-sand-50 border-b border-sand-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-white text-botanical-700 text-xs font-semibold uppercase tracking-wider border border-botanical-200">
+          100% Mexican Herbalism • Transparent INCI
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-botanical-900 leading-[1.1]">
+          Clean, transparent botanical skincare made in Mexico.
+        </h1>
+        <p class="text-base sm:text-lg text-stone-600 max-w-xl leading-relaxed">
+          High-concentration formulas powered by Mexican nopal, aloe vera, calendula, and botanical vitamin C. Free from parabens, sulfates, and greenwashing—at fair, accessible prices.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#catalog" class="px-7 py-3.5 rounded-full bg-botanical-700 hover:bg-botanical-900 text-white font-semibold text-sm shadow-sm transition">
+            Shop Launch Catalog
+          </a>
+          <button
+            onclick="addToCart(7)"
+            class="px-7 py-3.5 rounded-full bg-white hover:bg-sand-100 text-botanical-900 font-semibold text-sm border border-botanical-200 transition"
+          >
+            Add 3-Step Kit ($749 MXN)
+          </button>
+        </div>
+        <div class="pt-4 flex items-center gap-6 text-xs text-stone-500 font-medium">
+          <span>✓ Cruelty-Free</span>
+          <span>✓ Recyclable Amber Glass</span>
+          <span>✓ NOM-141 Certified</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual Showcase Card -->
+      <div class="relative">
+        <div class="bg-white rounded-3xl p-8 shadow-xl border border-sand-200 max-w-md mx-auto">
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-tr from-botanical-700 to-botanical-500 flex flex-col items-center justify-center text-white p-6 text-center relative overflow-hidden">
+            <span class="text-xs uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full mb-3">Best Seller Bundle</span>
+            <h2 class="font-serif text-3xl font-bold">3-Step Daily Routine Kit</h2>
+            <p class="text-sm text-botanical-100 mt-2">Nopal Cleanser + Rose Toner + Aloe Cream</p>
+            <div class="mt-4 inline-flex items-baseline gap-2 bg-botanical-900/40 px-4 py-1.5 rounded-full">
+              <span class="text-xl font-bold">$749 MXN</span>
+              <span class="text-xs line-through text-botanical-200">$807 MXN</span>
+            </div>
+          </div>
+          <div class="mt-5 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-botanical-700 font-semibold">Unlocks FREE Nationwide Shipping</p>
+              <p class="text-xs text-stone-500">Save 15% vs. individual purchase</p>
+            </div>
+            <button onclick="addToCart(7)" class="px-4 py-2 rounded-full bg-botanical-700 hover:bg-botanical-900 text-white text-xs font-semibold transition">
+              + Quick Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section (7 SKUs) -->
+  <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-botanical-500">Initial Launch Collection</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-botanical-900 mt-1">Botanical Skincare Essentials</h2>
+      </div>
+      <p class="text-sm text-stone-500">All products available for one-time purchase or 15% off monthly subscription.</p>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Rendered via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Trust & Value Badges Section -->
+  <section id="benefits" class="bg-botanical-900 text-sand-50 py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-botanical-700/40 p-6 rounded-2xl border border-botanical-700">
+          <div class="text-2xl mb-3">🌱</div>
+          <h3 class="font-serif text-xl font-bold mb-1">100% Transparent INCI</h3>
+          <p class="text-xs text-botanical-100 leading-relaxed">Full ingredient disclosure on every label. Formulated with Mexican nopal, aloe vera, and calendula.</p>
+        </div>
+        <div class="bg-botanical-700/40 p-6 rounded-2xl border border-botanical-700">
+          <div class="text-2xl mb-3">🚚</div>
+          <h3 class="font-serif text-xl font-bold mb-1">Fast National Shipping</h3>
+          <p class="text-xs text-botanical-100 leading-relaxed">$99 MXN flat rate via Estafeta &amp; DHL, or FREE shipping on orders of $749 MXN or more.</p>
+        </div>
+        <div class="bg-botanical-700/40 p-6 rounded-2xl border border-botanical-700">
+          <div class="text-2xl mb-3">🔒</div>
+          <h3 class="font-serif text-xl font-bold mb-1">100% Secure Checkout</h3>
+          <p class="text-xs text-botanical-100 leading-relaxed">Pay safely with Credit/Debit cards, Mercado Pago, PayPal, SPEI transfer, or OXXO Pay.</p>
+        </div>
+        <div class="bg-botanical-700/40 p-6 rounded-2xl border border-botanical-700">
+          <div class="text-2xl mb-3">♻️</div>
+          <h3 class="font-serif text-xl font-bold mb-1">Eco-Friendly Packaging</h3>
+          <p class="text-xs text-botanical-100 leading-relaxed">Amber UV-protective glass, recyclable aluminum tins, and biodegradable kraft boxes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-10">
+      <span class="text-xs font-bold uppercase tracking-widest text-botanical-500">Customer Support</span>
+      <h2 class="font-serif text-3xl font-bold text-botanical-900 mt-1">Frequently Asked Questions</h2>
+    </div>
+    <div class="space-y-4">
+      <details class="bg-white p-5 rounded-2xl border border-sand-200 group" open>
+        <summary class="font-semibold text-sm text-botanical-900 cursor-pointer flex justify-between items-center">
+          How long does shipping take across Mexico?
+          <span class="text-botanical-500">+</span>
+        </summary>
+        <p class="text-xs text-stone-600 mt-3 leading-relaxed">
+          Standard national delivery via Estafeta takes 2 to 4 business days ($99 MXN flat rate, or FREE on orders over $749 MXN). Express delivery via DHL takes 1 to 2 business days.
+        </p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl border border-sand-200">
+        <summary class="font-semibold text-sm text-botanical-900 cursor-pointer flex justify-between items-center">
+          How does the 15% OFF Monthly Subscription work?
+          <span class="text-botanical-500">+</span>
+        </summary>
+        <p class="text-xs text-stone-600 mt-3 leading-relaxed">
+          Select the subscription option on any product to receive automatic restocks every 30 or 45 days with an automatic 15% discount. You can pause, skip, or cancel anytime with one click.
+        </p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl border border-sand-200">
+        <summary class="font-semibold text-sm text-botanical-900 cursor-pointer flex justify-between items-center">
+          Are your products suitable for sensitive skin?
+          <span class="text-botanical-500">+</span>
+        </summary>
+        <p class="text-xs text-stone-600 mt-3 leading-relaxed">
+          Yes, all formulas are free of sulfates, parabens, and synthetic fragrances. Because natural botanical extracts are active ingredients, we always recommend a 24-hour patch test before full facial application.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-sand-100 border-t border-sand-200 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-sand-200">
+      <div>
+        <span class="font-serif text-2xl font-bold text-botanical-900">Aura Botánica MX</span>
+        <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+          Clean, honest botanical skincare formulated in Mexico under NOM-141 quality standards.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-wider text-botanical-900 mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-xs text-stone-600">
+          <li><a href="#catalog" class="hover:text-botanical-700">All Products</a></li>
+          <li><a href="#benefits" class="hover:text-botanical-700">Ingredient Glossary (INCI)</a></li>
+          <li><a href="#faq" class="hover:text-botanical-700">Shipping &amp; Returns Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-wider text-botanical-900 mb-3">Contact &amp; Skincare Help</h4>
+        <ul class="space-y-2 text-xs text-stone-600">
+          <li>Email: hola@aurabotanicamx.com</li>
+          <li>WhatsApp Business: +52 55 1234 5678</li>
+          <li>Mexico City, México (Mon–Fri 9am–6pm)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-wider text-botanical-900 mb-3">Accepted Payments</h4>
+        <div class="flex flex-wrap gap-2 text-[11px] font-semibold text-stone-700">
+          <span class="px-2.5 py-1 bg-white rounded border border-sand-200">VISA / MC</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-sand-200">Mercado Pago</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-sand-200">PayPal</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-sand-200">OXXO Pay / SPEI</span>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-stone-500 pt-6">
+      © 2026 Aura Botánica MX — E-Commerce Academic Prototype (ESCA Santo Tomás, IPN). Powered by Shopify.
+    </p>
+  </footer>
+
+  <!-- Slide-Out Interactive Shopping Cart Drawer -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCart()" class="absolute inset-0 bg-black/40 backdrop-blur-xs"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col justify-between p-6">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-sand-200">
+          <h3 class="font-serif text-2xl font-bold text-botanical-900">Your Shopping Cart</h3>
+          <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-700 text-xl font-bold">✕</button>
+        </div>
+
+        <!-- Free Shipping Progress Bar -->
+        <div class="my-4 p-3 rounded-xl bg-botanical-50 border border-botanical-200">
+          <p id="shippingMessage" class="text-xs font-semibold text-botanical-900 mb-1.5">
+            Add $749 MXN to unlock FREE Shipping!
+          </p>
+          <div class="w-full h-2 bg-botanical-200 rounded-full overflow-hidden">
+            <div id="shippingBar" class="h-full bg-botanical-700 transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cartItems" class="space-y-3 max-h-[52vh] overflow-y-auto pr-1">
+          <p class="text-sm text-stone-400 text-center py-8">Your cart is currently empty.</p>
+        </div>
+      </div>
+
+      <!-- Cart Footer / Checkout -->
+      <div class="pt-4 border-t border-sand-200 space-y-3">
+        <div class="flex justify-between text-xs text-stone-500">
+          <span>Shipping (Estafeta Standard)</span>
+          <span id="cartShipping">$99.00 MXN</span>
+        </div>
+        <div class="flex justify-between text-base font-bold text-botanical-900">
+          <span>Estimated Total</span>
+          <span id="cartTotal">$0.00 MXN</span>
+        </div>
+        <button
+          onclick="simulateCheckout()"
+          class="w-full py-3.5 rounded-full bg-botanical-700 hover:bg-botanical-900 text-white font-semibold text-sm transition shadow-sm"
+        >
+          Proceed to Shopify Checkout →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Storefront Logic -->
+  <script>
+    const products = [
+      {
+        id: 1,
+        sku: "SKU-01",
+        name: "Botanical Lip Balm (Shea & Candelilla)",
+        size: "10 g • Aluminum Tin",
+        price: 99,
+        badge: "Entry Price",
+        desc: "Nourishing botanical lip balm that protects against dryness. Recyclable aluminum tin.",
+        color: "bg-amber-100 text-amber-800"
+      },
+      {
+        id: 2,
+        sku: "SKU-02",
+        name: "Solid Facial Bar (Pink Clay & Calendula)",
+        size: "85 g • Kraft Box",
+        price: 129,
+        badge: "Eco Best Seller",
+        desc: "Cold-processed daily cleansing bar for sensitive skin with vegetable oils.",
+        color: "bg-rose-100 text-rose-800"
+      },
+      {
+        id: 3,
+        sku: "SKU-03",
+        name: "Botanical Facial Cleanser (Nopal & Green Tea)",
+        size: "150 ml • Pump Bottle",
+        price: 249,
+        badge: "Step 1: Cleanse",
+        desc: "Low-foam gel cleanser that removes urban impurities without stripping skin.",
+        color: "bg-emerald-100 text-emerald-800"
+      },
+      {
+        id: 4,
+        sku: "SKU-04",
+        name: "Balancing Facial Toner (Rose & Witch Hazel)",
+        size: "200 ml • Amber Glass",
+        price: 229,
+        badge: "Step 2: Balance",
+        desc: "Alcohol-free refreshing toner to soothe skin and restore natural pH balance.",
+        color: "bg-pink-100 text-pink-800"
+      },
+      {
+        id: 5,
+        sku: "SKU-05",
+        name: "Antioxidant Serum (Vitamin C & Niacinamide)",
+        size: "30 ml • UV Dropper",
+        price: 459,
+        badge: "Top Rated",
+        desc: "Fast-absorbing botanical concentrate to boost radiance and fight urban pollution.",
+        color: "bg-orange-100 text-orange-800"
+      },
+      {
+        id: 6,
+        sku: "SKU-06",
+        name: "Hydrating Facial Cream (Aloe & Jojoba Oil)",
+        size: "50 ml • Glass Jar",
+        price: 329,
+        badge: "Step 3: Hydrate",
+        desc: "Oil-free feel deep moisturizer ideal for combination and oily skin types.",
+        color: "bg-teal-100 text-teal-800"
+      },
+      {
+        id: 7,
+        sku: "SKU-07",
+        name: 'Essential Kit "3-Step Daily Routine"',
+        size: "Cleanser + Toner + Cream",
+        price: 749,
+        badge: "Save 15% + Free Ship",
+        desc: "Complete daily routine in a recycled gift box. Automatically unlocks FREE shipping.",
+        color: "bg-botanical-700 text-white"
+      }
+    ];
+
+    let cart = [];
+
+    function renderProducts(list = products) {
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = list.map(p => `
+        <div class="bg-white rounded-2xl border border-sand-200 p-5 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${p.color}">${p.badge}</span>
+              <span class="text-[11px] text-stone-400 font-mono">${p.sku}</span>
+            </div>
+            <div class="h-36 rounded-xl bg-sand-100 flex flex-col items-center justify-center p-4 text-center mb-4 border border-sand-200/60">
+              <span class="font-serif text-lg font-bold text-botanical-900 leading-snug">${p.name}</span>
+              <span class="text-xs text-botanical-600 mt-1">${p.size}</span>
+            </div>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">${p.desc}</p>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-3">
+              <span class="text-lg font-bold text-botanical-900">$${p.price.toFixed(2)} MXN</span>
+              <span class="text-[11px] text-botanical-600 font-medium">or $${(p.price * 0.85).toFixed(2)}/mo</span>
+            </div>
+            <button
+              onclick="addToCart(${p.id})"
+              class="w-full py-2.5 rounded-full bg-botanical-700 hover:bg-botanical-900 text-white text-xs font-semibold transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterProducts() {
+      const q = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+      );
+      renderProducts(filtered);
+    }
+
+    function addToCart(id) {
+      const item = products.find(p => p.id === id);
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCartUI();
+      document.getElementById("cartDrawer").classList.remove("hidden");
+    }
+
+    function changeQty(id, delta) {
+      const idx = cart.findIndex(c => c.id === id);
+      if (idx > -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+
+      const cartItemsEl = document.getElementById("cartItems");
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = `<p class="text-sm text-stone-400 text-center py-8">Your cart is currently empty.</p>`;
+      } else {
+        cartItemsEl.innerHTML = cart.map(item => `
+          <div class="flex items-center justify-between bg-sand-50 p-3 rounded-xl border border-sand-200">
+            <div class="pr-2">
+              <p class="text-xs font-bold text-botanical-900">${item.name}</p>
+              <p class="text-xs text-stone-500">$${item.price.toFixed(2)} MXN each</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded-full bg-white border border-sand-200 text-xs font-bold">-</button>
+              <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded-full bg-white border border-sand-200 text-xs font-bold">+</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      const freeShipThreshold = 749;
+      const pct = Math.min((subtotal / freeShipThreshold) * 100, 100);
+      document.getElementById("shippingBar").style.width = pct + "%";
+
+      const shippingCost = subtotal === 0 || subtotal >= freeShipThreshold ? 0 : 99;
+      document.getElementById("shippingMessage").textContent =
+        subtotal >= freeShipThreshold
+          ? "🎉 Congratulations! You unlocked FREE Nationwide Shipping!"
+          : `Add $${(freeShipThreshold - subtotal).toFixed(2)} MXN more to unlock FREE Shipping!`;
+
+      document.getElementById("cartShipping").textContent =
+        subtotal === 0 ? "$0.00 MXN" : (shippingCost === 0 ? "FREE" : "$99.00 MXN");
+      document.getElementById("cartTotal").textContent = `$${(subtotal + shippingCost).toFixed(2)} MXN`;
+    }
+
+    function toggleCart() {
+      document.getElementById("cartDrawer").classList.toggle("hidden");
+    }
+
+    function simulateCheckout() {
+      if (cart.length === 0) {
+        alert("Please add at least one product to your cart first.");
+        return;
+      }
+      alert("Redirecting to Shopify One-Page Checkout (Visa/MC, Mercado Pago, PayPal, OXXO Pay & SPEI enabled).");
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
